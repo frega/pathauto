@@ -46,7 +46,7 @@ class PathautoState extends TypedData {
         ->get($this->parent->getEntity()->id());
       // If it was not yet saved or no value was found, try to detect based on
       // an existing alias if the entity is not new.
-      if ($this->value === NULL) {
+      if ($this->value === NULL && $entity->id()) {
         $entity_path = '/' . $entity->toUrl()->getInternalPath();
         $path = \Drupal::service('path.alias_manager')
           ->getAliasByPath(
